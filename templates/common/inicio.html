@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load truncate %}
+
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="/media/css/common/inicio.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/media/css/proyectos/galeria_proyectos.css" media="screen" />
+    <script type='text/javascript' src='/media/js/common/inicio.js'></script>
+	<script type="text/javascript" src="/media/js/proyectos/galeria_proyectos.js"></script>
+    
+    <script type="text/javascript">
+		//Precargar icono de carga
+		ico1= new Image(48,48); 
+		ico1.src="{{ MEDIA_URL }}img/recursos/iconos/carga.gif"; 
+		
+		//Cagar Direcciones y ID's de las Imagenes
+		var imagenes = new Array();
+		var i=0;
+		{% for proyecto in proyectos %}
+		imagenes[i++] = new Array("{{ proyecto.id }}","{{ proyecto.imagen.extra_thumbnails.galeria }}","{{ proyecto.nombre }}");
+		{% endfor %}
+		
+		var tipo_proyecto = "Proyectos ";
+	</script>
+
+{% endblock %}
+
+{% block body %}
+	
+	{% if mostrar_swf %}
+	<div id="flashContent">
+    	<object width="940" height="610">
+        <param name="intro" value="/media/swf/intro.swf"></param>
+        <param name="allowscriptaccess" value="always"></param>
+        <param name="wmode" value="transparent">
+        <embed src="/media/swf/intro.swf" type="application/x-shockwave-flash" allowscriptaccess="always" width="940" height="610" wmode="transparent"></embed>
+    	</object>
+    </div>
+    {% endif %}
+
+	<div id="lateral">
+        <!-- Proyecto Futuro -->    
+        <div id="pro_futuro" class="proyectos">
+            <!-- Título del tipo de proyecto de la esquina -->
+            <a href="{% url galeria_proyectos 'Futuro' %}"  name="{{ proyectos.1.get_estado_display }}">
+                <div id="barra_futuro" class="barra_lateral"></div>
+            </a>   
+        </div>
+    
+        <!-- Proyecto Ejecutado-->
+        <div id="pro_ejecutado" class="proyectos">
+            <!-- Título del tipo de proyecto de la esquina -->
+            <a href="{% url galeria_proyectos 'Ejecutado' %}" name="{{ proyectos.2.get_estado_display }}">
+            	<div id="barra_ejecutado" class="barra_lateral"></div>
+           	</a>
+        </div>
+    </div>
+    {% if proyectos.0 %}
+    <!-- Proyecto Actual -->
+    
+    <!-- Galería de proyectos -->
+    <div id="galeria">
+    	<div class="img nor"></div><div class="img nor"></div><div class="img nor"></div>
+        <div id="botonera"><div id="sig" class="boton"></div><span id="botonera_texto"></span><div id="ant" class="boton"></div></div>
+        <div class="img rel"></div><div class="img rel"></div><div class="img rel"></div>
+    </div>
+    
+    <div id="pro_actual" class="proyectos">    	
+    	<div id="info_empresa">
+    		{% if empresa %}
+				{{ empresa.resena|safe }}
+			{% endif %}
+		</div>
+		
+	    <!-- Título del tipo de proyecto de la esquina -->
+	    <a href="{% url galeria_proyectos 'Actual' %}" name="{{ proyectos.0.get_estado_display }}">
+	    	<div id="barra_actual" class="barra_lateral"></div>
+	        <div class="barra_color"></div>
+	    </a>
+    </div>
+    {% else %}
+        <div id="pro_actual" class="proyectos">
+            <div class="aviso">Es necesario que ingrese un proyecto Actual para continuar</div>
+        </div>
+    {% endif %}
+    
+    <!-- Terminar grupo de elementos float:left -->
+    <div class="clear"></div>
+    
+{% endblock %}
+

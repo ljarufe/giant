@@ -1,0 +1,124 @@
+{% load querytags %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="keywords" content="Giant,Arequipa,Inmobiliaria,Proyectos,Lotes,Terrenos,Casas,Strip Center,Locales,Oficinas" />
+		<title>Giant | {{ titulo }}</title>
+			
+		<link rel="stylesheet" type="text/css" href="/media/css/style.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="/media/css/base.css" media="screen" />
+        <!-- Carga de estilo para el Internet Explorer 6 -->
+		<!--[if IE 6]>
+        <link rel="stylesheet" type="text/css" href="/media/css/ie6.css" media="screen" />
+        <![endif]-->
+		<script type="text/javascript" src="/media/js/common/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="/media/js/common/jquery.pngFix.js"></script> 
+		<script type='text/javascript' src='/media/js/common/base.js'></script>
+		
+		<meta name='description' content=''/>
+		<meta name='keywords' content=''/>
+		
+		{% block head %}
+		{% endblock %}
+	</head>
+	<body>
+	<!-- Contenedor Principal de Pagina -->
+    <div id="contenedor_principal">
+      <!-- Cabecera -->
+	
+    	<div id="cabecera">
+        	<!-- Logo -->
+            <a href="{% url inicio %}"><div id="logo"></div></a>
+    
+      
+      <!-- Menu Principal -->
+      
+      <div id="menu-principal">
+       <ul>
+			
+           <li><a href="{% url inicio %}">Inicio</a></li>
+           <li id="actuales"><a href="{% url galeria_proyectos 'Actual' %}">Actuales</a></li>
+           <li id="futuros"><a href="{% url galeria_proyectos 'Futuro' %}">Futuros</a></li>
+   			  <li class="menu_pri ofrecenos"><div class="menu_div_texto"><a href="{% url oportunidad_negocio %}">Ofrécenos</a></div>
+           </li>
+            <li class="menu_pri contactanos" id="menu_contactanos_li"><div class="menu_div_texto" id="menu_contactanos_div">Contáctanos</div>
+                    	<ul id="menu_sec_flotante">
+                            <li>► <a href="{% url registrar_cliente %}">Registro de Cliente</a></li>
+                            <li>► <a href="{% url informe_agente %}">Agente Inmobiliario</a></li>
+                       </ul>
+           </li>
+      	 
+       </ul>
+       </div>
+       
+       <!-- FIN Menu Principal  -->
+       
+           
+            
+            <!-- Terminar grupo de elementos float:left -->
+        	<div class="clear"></div>
+		</div>
+        
+		<div id="proyectos">
+       
+        </div>
+        
+        <!-- Body Template -->
+         <div id="bar-seccion">
+               
+            </div> 
+         <div id="bar-alpha">
+               
+         </div>
+          
+        <div id="body">
+           
+              <div id="bar-left">
+               
+            </div>
+            <div id="bg-principal">
+            
+                {% block body %}
+                	
+                {% endblock %}
+            </div>
+             <div id="bar-right">
+            </div>
+                        
+        </div>
+       
+             <div id="bar-seccion2">
+            </div>
+        <!-- Terminar grupo de elementos float:left -->
+        <div class="clear"></div>
+        
+        <!-- Pie de Página -->
+       	<div id="pie">
+       		<!-- Logo de Quimera hg -->
+        	<a href="http://www.quimerahg.com/">
+        		<div id="logo_alt"></div>
+        	</a>
+        	
+            <div id="text_pie">
+            	<div id="text_contacto">
+            		<!-- El código html que aparece aquí esta en /template/common/templatetags/cache_empresa_footer -->
+                	{% get_empresa_footer %}
+                 </div>
+                <div id="text_plus">
+                	<p>Derechos Reservados 2010 / Dessarrollado por <a href="http://aqpnet.com/">AQPNET</a></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pie de Página FIN -->
+        
+        
+        
+    </div>
+    
+  
+	</body>
+</html>

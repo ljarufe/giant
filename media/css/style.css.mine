@@ -1,0 +1,288 @@
+body {
+	background: url(/media/img/recursos/back.png);
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	margin: 0px;
+	padding: 0px;
+	color: white;
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	letter-spacing: -1px;
+}
+
+h1 {
+	font-size: 24px;	
+	margin: 5px 0px 15px 0px;
+}
+
+h2 {
+	font-size: 20px;
+	margin: 10px 0px 5px 0px;
+	font-weight: normal;
+}
+
+h3 {
+	font-size: 15px;
+	margin: 10px 0px 5px 0px;
+	font-weight: normal;
+}
+
+ul a {
+	text-decoration: none;
+}
+
+ul a:hover {
+	text-decoration: underline;
+}
+
+a {
+	color: #FFF;
+}
+
+p {
+	text-align: justify;
+}
+
+.clear {
+	clear: both;!important
+}
+
+/* Formularios */
+
+form ul {
+	list-style: none;
+}
+
+	form ul li {
+		margin: 2px;
+	}
+	
+	form ul li .label{
+		width: 100px;
+		font-size: 12px;
+		margin-top: 5px;
+	}
+	
+		form ul li .errors ul{
+			background: url(/media/img/recursos/iconos/form_error.png) no-repeat;
+			padding-left: 20px;
+			margin: 5px 0px 0px 10px;
+			height: 15px;
+		}
+	
+	form ul li input, form ul li textarea, form ul li select {
+		background: #CCC;
+		border: 1px solid #FFF;
+	}
+	
+	form ul li input[type="submit"] {
+		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+		background: #C4CD6A;
+		border: 1px solid #FFF;
+		color: #FFF;
+		width: 50px;
+		height: 24px;
+		font-weight: bold;
+		font-size: 16px;
+		letter-spacing: -1px;
+		cursor: pointer;
+		padding: 0px 3px;
+		margin: 2px;
+	}
+	
+	form ul li .form_div{
+		float: left;
+	}
+	
+	form ul li .help {
+		width: 150px;
+		margin-left: 10px;
+	}
+	
+	form ul li .aviso_obligatorio {
+		margin: 10px 0px;	
+	}
+	
+/* Vinculos Redondeados */
+.div_vinculo {
+		background-position: 0px 50%;
+		margin: 10px 0px 10px 0px;
+	}
+	
+	.div_vinculo .vinculo {
+		background: #EEE url(/media/img/recursos/fondos/boton_fondo.png) repeat-x;
+		color:#333;
+		text-decoration:none;
+		text-align:center;
+		padding: 2px 10px;
+		font-weight:bold;
+		font-size: 11px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		letter-spacing: -1px;
+	}
+	.div_vinculo .vinculo:hover{
+		background-color: #FFF;
+		color:#666;
+	}
+
+
+/* cache_empresa_info */
+
+#empresa_info {
+	background: #4C4C4E;
+	padding: 5px;
+	margin-top: 20px;
+}
+	#empresa_info ul {
+		list-style: none;
+		padding-left: 10px;
+		margin: 5px 0px;
+=======
+/* style.css */
+
+body {
+	background: url(/media/img/recursos/back.png);
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 11px;
+	margin: 0px;
+	padding: 0px;
+	color: white;
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	letter-spacing: -1px;
+}
+
+h1 {
+	font-size: 24px;	
+	margin: 2px 0px 18px 0px;
+}
+
+h2 {
+	font-size: 20px;
+	margin: 10px 0px 5px 0px;
+	font-weight: normal;
+}
+
+h3 {
+	font-size: 15px;
+	margin: 20px 0px 5px 0px;
+	font-weight: normal;
+}
+
+ul a {
+	text-decoration: none;
+}
+
+ul a:hover {
+	text-decoration: underline;
+}
+
+a {
+	color: #FFF;
+}
+
+p {
+	text-align: justify;
+}
+
+.clear {
+	clear: both;!important
+}
+
+/* Formularios */
+
+form ul {
+	list-style: none;
+}
+
+	form ul li {
+		margin: 2px;
+	}
+	
+	form ul li .label{
+		width: 100px;
+		font-size: 12px;
+		margin-top: 5px;
+	}
+	
+		form ul li .errors ul{
+			background: url(/media/img/recursos/iconos/form_error.png) no-repeat;
+			padding-left: 20px;
+			margin: 5px 0px 0px 10px;
+			height: 15px;
+		}
+	
+	form ul li input, form ul li textarea, form ul li select {
+		background: #CCC;
+		border: 1px solid #FFF;
+	}
+	
+	form ul li input[type="submit"] {
+		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+		background: #C4CD6A;
+		border: 1px solid #FFF;
+		color: #FFF;
+		width: 50px;
+		height: 24px;
+		font-weight: bold;
+		font-size: 16px;
+		letter-spacing: -1px;
+		cursor: pointer;
+		padding: 0px 3px;
+		margin: 2px;
+	}
+	
+	form ul li .form_div{
+		float: left;
+	}
+	
+	form ul li .help {
+		width: 150px;
+		margin-left: 10px;
+	}
+	
+	form ul li .aviso_obligatorio {
+		margin: 10px 0px;	
+	}
+	
+/* Vinculos Redondeados */
+.div_vinculo {
+		background-position: 0px 50%;
+		margin: 10px 0px 10px 0px;
+	}
+	
+	.div_vinculo .vinculo {
+		background: #EEE url(/media/img/recursos/fondos/boton_fondo.png) repeat-x;
+		color:#333;
+		text-decoration:none;
+		text-align:center;
+		padding: 2px 10px;
+		font-weight:bold;
+		font-size: 11px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		letter-spacing: -1px;
+	}
+	.div_vinculo .vinculo:hover{
+		background-color: #FFF;
+		color:#666;
+	}
+
+
+/* cache_empresa_info */
+
+#empresa_info {
+	background: #4C4C4E;
+	padding: 5px;
+	margin-top: 20px;
+}
+	#empresa_info ul {
+		list-style: none;
+		padding-left: 10px;
+		margin: 5px 0px;
+	}

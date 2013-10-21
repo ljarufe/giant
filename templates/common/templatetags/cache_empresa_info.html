@@ -1,0 +1,12 @@
+{% if empresa %}
+    <h2>{{ empresa.razon_social }}</h2>
+    <ul>
+        <li>{{ empresa.direccion }}</li>
+        <li>{{ empresa.telefono }}</li>
+        <li>{{ empresa.celular }}</li>
+        <li>{{ empresa.web }}</li>
+        <li>{{ empresa.email }}</li>
+    </ul>
+{% else %}
+    <span>Cree una empresa para que su información se coloque aquí</span>
+{% endif %}

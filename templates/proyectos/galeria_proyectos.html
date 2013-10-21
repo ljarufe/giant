@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="/media/css/proyectos/galeria_proyectos.css" media="screen" />
+	<script type="text/javascript" src="/media/js/proyectos/galeria_proyectos.js"></script>
+    
+    <script type="text/javascript">
+		//Precargar icono de carga
+		ico1= new Image(48,48); 
+		ico1.src="{{ MEDIA_URL }}img/recursos/iconos/carga.gif"; 
+		
+		//Cagar Direcciones y ID's de las Imagenes
+		var imagenes = new Array();
+		var i=0;
+		{% for proyecto in proyectos %}
+		imagenes[i++] = new Array("{{ proyecto.id }}","{{ proyecto.imagen.extra_thumbnails.galeria }}","{{ proyecto.nombre }}");
+		{% endfor %}
+		
+		var tipo_proyecto = "{{ tipo_proyecto }}";
+	</script>
+	
+{% endblock %}
+
+{% block body %} 
+<div id="back-form">
+	<!-- Galería de proyectos -->
+    <div id="galeria">
+    	<a href="{% url detalle_proyecto principal.id %}" class="vinculo"><div class="img nor"></div><div class="img nor"></div><div class="img nor"></div></a>
+        <div id="botonera"><div id="sig" class="boton"></div><span id="botonera_texto"></span><div id="ant" class="boton"></div></div>
+        <div class="img rel"></div><div class="img rel"></div><div class="img rel"></div>
+    </div>	
+    
+    <!-- Detalle del proyecto activo -->
+   
+        <div class='clear'></div>
+    </div>
+   
+{% endblock %}

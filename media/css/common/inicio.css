@@ -1,0 +1,130 @@
+/* inicio.css */
+
+/* Ocultar Barra de Proyectos en el Inicio y Estilos */
+
+#proyectos {
+	display: none;
+}
+
+
+/**/
+
+#body #flashContent {
+	position: absolute;
+	top: 5px;
+	z-index: 5px;
+	width: 940px;
+	height: 610px;
+}
+
+#lateral {
+	background: url(/media/img/recursos/lateral/lateral_fondo.png) 0px 365px no-repeat;
+	float: left; 
+	width: 35px;
+	height: 420px;
+}
+
+#pro_ejecutado {
+	width: 35px;
+	height: 195px;
+	clear: left;
+}
+
+	.proyectos #barra_ejecutado {
+		background: url(/media/img/recursos/lateral/ejecutados.png) no-repeat right;
+		height: 195px;
+	}
+
+#pro_futuro {
+	width: 35px;
+	height: 170px;
+}
+
+	.proyectos #barra_futuro {
+		background: url(/media/img/recursos/lateral/futuros.png) no-repeat right;
+		height: 170px;
+	}
+
+#pro_actual {
+	width: 625px;
+	height: 420px;
+}
+	
+	#pro_actual #info_empresa {
+		float: right;
+		padding-left: 15px;
+		margin-right: 50px;
+	}
+
+	.proyectos #barra_actual {
+		background: url(/media/img/recursos/lateral/actuales.png) no-repeat right;
+		margin-left: 590px;
+		height: 190px;
+		float: none;
+	}
+	
+	#pro_actual .barra_color {
+		background: #CA0911;
+		height: 230px;
+		float: none;
+		margin-left: 620px;
+	}
+	
+.proyectos {
+	float: left;
+}
+	.proyectos .barra_lateral {
+		float: right;
+		width: 35px;
+		height: 420px;
+	}
+	
+	.proyectos .barra_color {
+		background: #00F;
+		width: 5px;
+		float: right;
+	}
+
+	.proyectos .descripcion {
+		float: right;
+		height: 80px;
+		padding: 0px 5px 5px 5px;
+		color: #FFF;
+	}
+	
+	.proyectos .descripcion a { 
+		text-decoration: none;
+	}
+	
+	.proyectos .descripcion h2 { 
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 20px;
+		font-weight: normal;
+		margin: 5px 0px 0px;
+		color: #FFF;
+		line-height: 19px;
+	}
+	
+	.proyectos .descripcion h2 { 
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 22px;
+		font-weight: normal;
+		margin: 7px 0px 0px;
+		color: #FFF;
+		line-height: 21px;
+	}
+	
+	.proyectos .descripcion p { 
+		margin: 5px 0px;
+		cursor: text;
+	}
+
+	.aviso{
+		background: #999 url(/media/img/recursos/iconos/aviso_adm.png) no-repeat center 10px;
+		color: #FFF;
+		font-size: 13px;
+		margin: 5px;
+		padding: 70px 5px 10px 5px;
+		line-height: 12px;
+		text-align: center;
+	}

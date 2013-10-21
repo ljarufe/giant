@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Ayuda de edición de terrenos</title>
+		
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/style.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/base.css" media="screen" />
+	</head>
+    <body>
+        <div id="ayuda_poligono">
+        	<h1>Ayuda para la construcción de terrenos</h1>
+        	<ul>
+			    <li>
+					Para empezar deberá hacer click en el botón "Dibujar el terreno",
+					al hacerlo se habilitará la edición de terrenos sobre el mapa, el 
+					cursor cambiará de la mano para mover la posición del mapa a una
+					cruz para marcar los puntos.
+				</li>
+				<li>
+					Cada click sobre el mapa representará uno de los vértices (esquinas) 
+					del terreno, la primera arista (lado) del terreno se dibujará al hacer los
+					dos primeros clicks en el mapa, que representarían dos esquinas,
+					luego de esto se dibujará un nuevo lado con cada nuevo vértice.
+					<div>
+						<img src="{{ MEDIA_URL }}img/recursos/ayuda1.png" width="320px">
+					</div>
+				</li>
+			    <li>
+					Cuando haya dibujado el penúltimo vértice del terreno haga click
+					sobre el botón "Cerrar terreno" para completar el dibujo.
+					<div>
+						<img src="{{ MEDIA_URL }}img/recursos/ayuda2.png" width="320px">
+					</div>
+				</li>
+			    <li>
+					Si su terreno tuviera más de un área no contigua puede volver a
+					hacer click sobre "Dibujar el terreno" para seguir el procedimiento 
+					anterior cuantas veces desee.
+					<div>
+						<img src="{{ MEDIA_URL }}img/recursos/ayuda3.png" width="320px">
+					</div>
+				</li>
+				<li>
+					Si tuvo algún error al dibujar su terreno puede empezar a dibujar 
+					de nuevo haciendo click sobre el botón "Borrar los terrenos".
+				<li>
+					El mapa se cargará centrado en la posición de la marca roja, 
+					arrástrela a donde considere la parte central de su terreno.
+					<div>
+						<img src="{{ MEDIA_URL }}img/recursos/ayuda4.png" width="320px">
+					</div>
+				</li>
+			<ul>
+        </div>
+    </body>
+</html>

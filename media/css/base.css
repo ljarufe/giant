@@ -1,0 +1,212 @@
+
+/* base.css */
+
+#contenedor_principal {
+	width: 940px;
+	margin: 0px auto;
+	padding: 0px;
+	background:#212020;
+}
+
+#cabecera {
+	background: url(/media/img/recursos/cabecera.png);
+	width: 940px;
+	margin: 0px;
+	height: 110px;
+}
+	
+	#cabecera  h1 {
+		margin: 0px;
+		font-size: 14px;
+	}
+	
+	#cabecera #logo {
+		background: url(/media/img/recursos/logo.png) no-repeat;
+		width: 160px;
+		height: 88px;
+		margin-left:10px;
+		margin-top:10px;
+		float: left;
+	}
+	
+	
+	#menu-principal {
+		width:600px;
+		height:40px;
+		position:absolute;
+		margin-left:250px;
+		margin-top:70px;
+		z-index:1;
+		
+	}
+	#menu-principal ul {
+		width:520px;
+		height:30px;
+	}
+	
+	#menu-principal ul li{
+		display:inline-block;
+		width:100px;
+		height:20px;
+		text-align:center;
+		vertical-align:middle;
+		padding-top:10px;
+		padding-right:0px;
+		background:url(../img/recursos/buttonbackgiant.png);
+	}
+	#menu-principal ul li:hover{
+		display:inline-block;
+		width:100px;
+		height:20px;
+		text-align:center;
+		vertical-align:middle;
+		padding-top:10px;
+		background: url(../img/recursos/buttonbackovergiant.png);
+	}
+	
+
+	#menu-principal ul li a{
+			text-decoration:none;
+	}
+	#menu-principal #menu_sec_flotante {
+					
+					font-family: Arial, Helvetica, sans-serif;
+					font-family: Verdana, Geneva, sans-serif;
+					font-size: 8px;
+					font-weight: normal;
+					text-align: left;
+					width: 100px;
+					height: 30px;
+					position: absolute;
+					margin-top:6px;
+					z-index:1;
+				}
+	#menu-principal #menu_sec_flotante:hover{
+					
+					font-family: Arial, Helvetica, sans-serif;
+					font-family: Verdana, Geneva, sans-serif;
+					font-size: 8px;
+					font-weight: normal;
+					text-align: left;
+					width: 100px;
+					height: 30px;
+					position: absolute;
+					margin-left:0px;
+					margin-top:6px;
+					z-index:1;
+				}
+
+#body {
+	background: #000;
+	width: 880px;
+	min-height: 450px;
+	float: left;
+	position:absolute;
+	margin-left:25px;
+	
+}
+
+
+	#body #bg-principal {
+	background: url(../img/recursos/back-principal-giant.png) repeat-x;
+	width: 800px;
+	height:400px;
+	float:left;
+	margin-top:20px;
+	
+	}
+	
+	body #bar-seccion {
+	height:350px;
+	width:25px;
+	background: #5F5C5D;
+	float:left;
+	margin-top:35px;	
+	}
+	body #bar-alpha{
+	height:415px;
+	width:25px;
+	float:left;
+	margin-top:35px;
+	border-left-color:#F00;
+	border:thin;
+	/*background:#39C;*/
+	}
+	body #bar-left {
+		
+	height:400px;
+	width:15px;
+	background:#999;	
+	float:left;
+	margin-top:20px;
+	margin-left:30px;
+	
+		
+	}
+	body #bar-right {
+		
+	height:400px;
+	width:15px;
+	background:#999;
+	margin-top:20px;
+	float: left;
+	}
+	body #bar-seccion2 {
+		
+	height:350px;
+	width:15px;
+	background: #5F5C5D;
+	float: right;
+	margin-top:35px;
+	
+	/*margin-left:30px;	*/
+	}
+
+#pie {
+	background: url(/media/img/recursos/pie.png) no-repeat;
+	width: 940;
+	height: 105px;
+	color: #999;
+	font-size: 9px;
+	float:none;
+}
+
+	#pie #logo_alt {
+		background: url(/media/img/recursos/logo_quimera.png) no-repeat;
+		width: 143px;
+		height: 50px;
+		float: right;
+		position: relative;
+		top: 15px;
+		left: 15px;
+		margin-right:420px;
+		
+	}
+	
+	#pie #text_pie {
+		float: left;
+		text-align: right;
+		position: relative;
+		top: 5px;
+		right: 15px;
+	}
+	
+		#pie #text_pie #text_contacto {
+			margin-top:15px;
+			margin-left:50px;
+			text-align:left;
+		}
+		
+		#pie #text_pie #text_plus {
+			
+			margin-left:50px;
+			text-align:left;
+		}
+		#pie #text_pie p{
+			margin: 0px;
+			text-align: left;
+		}
+		
+		#pie #text_pie a{
+			color: #999;
+		}

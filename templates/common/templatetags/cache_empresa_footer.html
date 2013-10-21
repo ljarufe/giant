@@ -1,0 +1,7 @@
+{% if empresa %}
+    <p>Direccion: {{ empresa.direccion }}</p>
+    <p>e-mail: {{ empresa.email }}</p>
+    <p>Telefono: {{ empresa.telefono }}</p>
+{% else %}
+    <span>Cree una empresa para tener sus datos en el pie de página</span>
+{% endif %}

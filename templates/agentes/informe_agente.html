@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load querytags %}
+{% load form_display %}
+
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="/media/css/agentes/informe_agente.css" media="screen" />
+{% endblock %}
+
+{% block body %}
+
+    <h1>Agente Inmobiliario</h1>
+    <p><br><br><br><br><br>Si eres agente inmobiliario, comun&iacute;cate con nosotros.</p>
+    <div id="back-form">
+    <form method='post' action=''>
+        <ul>
+            {% display_as_ul form %}
+            <li>
+                <div class="form_div label"></div>
+                <div class="aviso_obligatorio">Los campos marcados con * son obligatorios para registrarse.</div>
+            </li>
+            <li>
+                <div class="form_div label"></div>
+                <div class="form_div field"><input type="submit" value="Enviar"></div>
+                <div class="clear"></div>
+            </li>
+        </ul>
+    </form>
+    </div>
+    
+    <!-- Información de la empresa -->
+    <div id="empresa_info">
+        <!-- El código html que aparece aquí esta en /template/common/templatetags/cache_empresa_info -->
+        {% get_empresa_info %}
+    </div>
+    
+{% endblock %}

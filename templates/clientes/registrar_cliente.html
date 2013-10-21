@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load querytags %}
+{% load form_display %}
+
+{% block head %}
+
+	<link rel="stylesheet" type="text/css" href="/media/css/clientes/registrar_cliente.css" media="screen" />
+    <script type="text/javascript">
+        proyecto = {{ sel_proyecto.id }};
+    </script>
+	<script type="text/javascript" src="/media/js/clientes/registrar_cliente.js"></script>
+	<script type="text/javascript" src="/media/js/common/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			$("#id_interes").attr("checked",false);
+			$("#id_interes").click(function(){
+				var ck = $(this).is(":checked");
+				if (ck == true){
+					$("#id_proyecto").attr("disabled","disabled");
+					$("#id_proyecto option[value='']").attr("selected",true);
+				}
+				else{
+					$("#id_proyecto").removeAttr("disabled");
+					$("#id_proyecto option[value=" + proyecto + "]").attr("selected", true);
+				}
+			});
+		}
+	</script>
+{% endblock %}
+
+{% block body %}
+	<h1>Registro de Cliente</h1>
+    <p><br><br><br><br> Ingresa tus datos<p>
+    <div id="back-form">
+    <form method="post" action="" name="contact">
+    <div class="form_div izq">
+    	<ul>
+            {% if invalid_user %}
+            <li>Este e-mail no ha sido registrado aún, por favor llene sus datos</li>
+            {% endif %}
+            {% display_as_ul cliente_form %}
+            <li>
+            	<div class="form_div label"><label for="id_comentario">Comentario</label></div>
+                <div class="form_div field"><textarea id="id_comentario" name="comentario"></textarea></div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="form_div label"></div>
+                <div class="aviso_obligatorio">Los campos marcados con * son obligatorios para registrarse.</div>
+            </li>
+            <li>
+            	<div class="form_div label"></div>
+                <div class="form_div field"><input type="submit" value="Enviar"></div>
+                <div class="clear"></div>
+            </li>
+        </ul>
+    </div>
+    <div class="form_div der">
+    	<ul>
+        	<li><input type="checkbox" name="registrado" value="True">Me he registrado antes</li>
+            <li class="help">Sólo ingrese su e-mail y el proyecto de su interés</li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+    </form>
+    </div>
+    <!-- Información de la empresa -->
+    <div id="empresa_info">
+        <!-- El código html que aparece aquí esta en /template/common/templatetags/cache_empresa_info -->
+        {% get_empresa_info %}
+    </div>
+    
+{% endblock %}

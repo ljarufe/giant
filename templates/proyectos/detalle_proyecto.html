@@ -1,0 +1,310 @@
+{% extends 'base.html' %}
+{% load form_display %}
+		
+{% block head %}
+
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/proyectos/detalle_proyecto.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/media/colorbox/colorbox.css" media="screen" />
+	<link type="text/css" href="{{ MEDIA_URL }}ui/development-bundle/themes/black-tie/jquery.ui.all.css" rel="stylesheet" />
+	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=ABQIAAAAMRdj9lILtQvXkiEUNZPsEBQCCdc6IyS-iZzD9lKkW701baXF_RSBnKOUZ5Sm7DXHYpHTYPgqbM0mzg" type="text/javascript"></script>
+	<script src="http://www.google.com/uds/api?file=uds.js&amp;v=1.0" type="text/javascript"></script>
+	<script src="http://www.google.com/uds/solutions/localsearch/gmlocalsearch.js" type="text/javascript"></script>
+	<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAMRdj9lILtQvXkiEUNZPsEBQCCdc6IyS-iZzD9lKkW701baXF_RSBnKOUZ5Sm7DXHYpHTYPgqbM0mzg"></script>
+	<script type="text/javascript" src="/media/colorbox/jquery.colorbox.js"></script>
+	<script src="{{ MEDIA_URL }}js/proyectos/detalle_proyecto.js" type="text/javascript"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}ui/development-bundle/ui/jquery.ui.core.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}ui/development-bundle/ui/jquery.ui.widget.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}ui/development-bundle/ui/jquery.ui.tabs.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}glossy/glossy.js"></script>
+	<script type="text/javascript">
+		// Cargar todas las referencias
+		var referencias = new Array();
+		{% for ref in referencias %}
+			var referencia = new Object();
+			referencia.nombre = "{{ ref.nombre }}";
+			referencia.desc = "{{ ref.descripcion }}";
+			referencia.icono = "{{ MEDIA_URL }}{{ ref.icono }}";
+			referencia.lat = {{ ref.latitud }};
+			referencia.lng = {{ ref.longitud }};
+			referencias.push(referencia);
+		{% endfor %}
+		
+		// Cargar los poligonos del terreno
+		var poligonos = new Array();
+		{% for poligono in poligonos %}
+			var puntos = new Array();
+			{% for punto in poligono %}
+				var punto = new Object();
+				punto.lng = {{ punto.longitud }};
+				punto.lat = {{ punto.latitud }};
+				puntos.push(punto);
+				p = new GLatLng({{ punto.longitud }}, {{ punto.latitud }});
+			{% endfor %}
+			poligonos.push(puntos);
+		{% endfor %}
+		
+		// Ubicación principal del terreno
+		var longitud = {{ proyecto.geo.longitud }};
+		var latitud = {{ proyecto.geo.latitud }};
+		var address = '<h2>{{ proyecto.nombre }}</h2><img src="{{ proyecto.imagen.thumbnail }}" style="position:relative; width:100px; height:100px;"/>';
+		$(function() {
+			$("#tabs").tabs({
+				event: 'mouseover'
+		});
+	});
+		
+	</script>
+	
+{% endblock %}
+
+{% block body %}
+<h1>Actuales</h1>
+<h2><br><br>Proyecto {{ proyecto.get_estado_display|lower }}</h2>
+<div id="back-form">
+	<!-- Estado del proyecto -->
+	
+    <div class="div_vinculo">
+    	
+		<a href="{% url registrar_cliente proyecto.id %}" class="vinculo">Cont&aacute;ctanos</a>
+		{% if proyecto.pdf %}
+	        <a href="{{ MEDIA_URL }}{{ proyecto.pdf }}" class="vinculo">Ver PDF</a><span></span>
+	    {% endif %} | 
+        <a href="{% url galeria_proyectos proyecto.get_estado_display %}" class="vinculo" >Regresar a Galería</a>
+    </div>
+	
+	<div id="imagen_detalle">
+	<h2>Im&aacute;genes del proyecto</h2>
+	{% if tresd %}
+		{% for d in tresd %}
+			<div class="tresd_detalle" id="large{{ d.id }}">
+				<a href="{{ d.imagen.extra_thumbnails.detalle }}" rel="light" title="{{ d.imagen }} | {{ d.proyecto.nombre }}"><img src="{{ d.imagen.extra_thumbnails.galeria }}" class="imagen" border="0"/></a>
+			</div>
+		{% endfor %}
+		<div class="mini">
+			<div class="scroll">
+		{% for mini in tresd %}
+				<div class="super_mini" id="{{ mini.id }}"><a href=""><img src="{{ mini.imagen.extra_thumbnails.galeria }}" height="50px" border="0"/></a></div>
+		{% endfor %}
+			</div>
+		</div>
+		{% if qTresD > 4 %}
+		<div id="galeria">
+			<div id="botonera"><div id="sig" class="boton"></div><span id="botonera_texto">Navegar</span><div id="ant" class="boton"></div></div>
+		</div>
+		{% endif %}
+	{% endif %}
+	</div>
+    
+	<!-- Descripcion del proyecto -->
+	<div><h2 class="toggle" idb="proyecto"><img src="/media/img/recursos/iconos/alpha.png" class="bullet" style="background-position: 15px 0px;"/>{{ proyecto.nombre }}</h2></div><a name="inicio"></a>
+	<div id="toggle_proyecto" class="toggle_contenido">
+	<p><h3>Tipo de proyecto: {{ proyecto.tipo_proyecto }}</h3>
+	<p>{{ proyecto.descripcion|safe }}</p>
+	<p><span>Numero de lotes: </span>{{ proyecto.numero_lotes }}</p>
+	{% if proyecto.beneficios %}
+	<h2>Beneficios</h2>
+	<p>{{ proyecto.beneficios|safe }}</p>
+	{% endif %}
+	{% if proyecto.servicios %}
+	<p><span>Servicios: </span>{{ proyecto.servicios|safe }}</p>
+	{% endif %}
+	{% if caracteristicas %}
+	<h2>Caracteristicas</h2>
+	<ul>
+	{% for caracteristica in caracteristicas %}
+		<li><span><b>{{ caracteristica.nombre }}:</b> </span>{{ caracteristica.descripcion|safe }}</li>
+	{% endfor %}
+	</ul>
+	{% endif %}
+	</div>
+    
+	<!-- Referencias y ubicacion del proyecto -->
+	<div><h2 class="toggle clear" idb="ubicacion"><img src="/media/img/recursos/iconos/alpha.png" class="bullet" style="background-position: 15px 0px;"/>Ubicaci&oacute;n y plano de lotes</h2></div>
+	<div id="toggle_ubicacion" class="toggle_contenido">
+	{% if proyecto.referencia %}
+		<p><span>Referencia: </span>{{ proyecto.referencia }}</p>
+	{% endif %}
+	<p><span>Area del terreno: <span>{{ area_total.area__sum }}</p>
+	
+	<h2>Mapas y Plano</h2>
+	<div id="wrapper_maps">
+  	 <div id="tabs">
+        <ul>
+            <li>
+            	<a href="#tabs1">{{ proyecto.nombre }}</a>
+               
+            </li>
+            <li>
+                 <a href="#tabs2">Ubicaci&oacute;n del proyecto en Google Maps</a>
+            </li>
+        </ul>
+        <div id="tabs1">
+        	<img src="/media/{{ proyecto.mapa }}" width="730px"/>
+            
+        </div><!-- Mapa del terreno -->
+        <div id="tabs2">
+			<div id="map" style="width:730px;height:394px;">
+        	</div>
+        </div>
+		
+    </div>
+	<div id="plano"><img src='/media/{{ proyecto.plano }}' width='730px'/></div>
+	
+	 
+	<a href="#inicio">Volver al inicio</a>
+	</div>
+	
+	<div><h2 class="toggle" idb="fechas"><img src="/media/img/recursos/iconos/alpha.png"  class="bullet"/>Eventos del proyecto</h2></div><a href="#inicio">Volver al inicio</a>
+	<div id="toggle_fechas" class="toggle_contenido">
+	<ul>
+		<li>{{ proyecto.evento_inicio|safe }}</li>
+	</ul>
+	</div>
+	<!-- Forma de financiamiento -->
+	<div><h2 class="toggle" idb="pago"><img src="/media/img/recursos/iconos/alpha.png" class="bullet"/>Forma de pago | Financiamiento</h2></div><a href="#inicio">Volver al inicio</a>
+	<div id="toggle_pago" class="toggle_contenido">
+	{% if proyecto.forma_pago %}
+	<h3>{{ proyecto.forma_pago }}</h3>
+	<p>{{ proyecto.forma_pago.descripcion|safe }}</p>
+	{% endif %}
+	{% if proyecto.financiamiento %}
+	<h3>{{ proyecto.financiamiento }}</h3>
+	<p>{{ proyecto.financiamiento.descripcion|safe }}</p>
+	{% endif %}
+	</div>
+    
+	<!-- Detalles de las construcciones para el proyecto -->
+	{% if construcciones %}
+	<div><h2 class="toggle" idb="caracteristicas"><img src="/media/img/recursos/iconos/alpha.png" class="bullet"/>Características de {{ proyecto.nombre|lower }}</h2></div><a href="#inicio">Volver al inicio</a>
+	<div id="toggle_caracteristicas" class="toggle_contenido">
+	<table>	
+		<tr>
+			<th>Mz.</th>
+			<!-- TODO: Este span es para poner como superíndice el 2 de metros cuadrados-->
+			<th>Area terreno (m<span><sup>2</sup></span>)</th>
+			<th>Area construída (m<span><sup>2</sup></span>)</th>
+			<th>Area techada (m<span><sup>2</sup></span>)</th>
+			<th>Estado</th>
+			<th>Precio</th>
+			<th>Modelo</th>
+		</tr>
+	{% for construccion in construcciones %}
+		<tr>
+			<td>{{ construccion.manzana }} - {{ construccion.lote }}</td>
+			<td>{{ construccion.area_construida }}</td>
+			<td>{{ construccion.area_construida }}</td>
+			<td>{{ construccion.area_techada }}</td>
+			<td>{{ construccion.get_estado_display }}</td>
+			<td>{{ construccion.precio }}</td>
+			<td><a href="/media/{{ construccion.modelo.plano }}" rel="models_table" title="ver modelo">{{ construccion.modelo.nombre }}</a></td>
+		</tr>
+	{% endfor %}
+	</table>
+	<h4>* Haga click sobre el vinculo <u>modelo#</u></h4>
+	</div>
+	{% endif %}
+	
+	{% if terreno %}
+	<div><h2 class="toggle" idb="terreno"><img src="/media/img/recursos/iconos/alpha.png" class="bullet"/>Terrenos de {{ proyecto.nombre|lower }}{{ terreno|length|pluralize }}</h2></div><a href="#inicio">Volver al inicio</a>
+	<div id="toggle_terreno" class="toggle_contenido">
+	<table>	
+		<tr>
+			<th>Mz-Lt</th>
+			<!-- TODO: Este span es para poner como superíndice el 2 de metros cuadrados-->
+			<th>Area terreno (m<span><sup>2</sup></span>)</th>
+			<th>Estado</th>
+			<th>Precio (m<span><sup>2</sup></span>)</th>
+		</tr>
+	{% for t in terreno %}
+		<tr>
+			<td>{{ t.manzana }} - {{ t.lote }}</td>
+			<td>{{ t.area }}</td>
+			<td>{{ t.get_estado_display }}</td>
+			<td>{{ t.precio }}</td>			
+		</tr>
+	{% endfor %}
+	</table>
+	</div>
+	{% endif %}
+	
+	<!-- Detalles de acabados por niveles y ambientes -->
+	{% if detalles_construccion %}
+	<div><h2 class="toggle" idb="detalle"><img src="/media/img/recursos/iconos/alpha.png" class="bullet"/><h2>Detalles de los acabados</h2></div><a href="#inicio">Volver al inicio</a>
+	<div id="toggle_detalle" class="toggle_contenido">
+	<table>
+		<tr>
+			<th>Nivel</th>
+			<th>Ambiente</th>
+			<th>Acabado</th>
+			<th>Marca</th>
+			<th>Medidas</th>
+			<th>Descripción</th>
+		</tr>
+	{% for construccion in detalles_construccion %}
+		<tr>
+			<th rowspan="{{ construccion.rowspan }}">{{ construccion.nivel }}</th>			
+			{% for ambiente in construccion.ambientes %}
+			<th rowspan="{{ ambiente.acabados|length }}">{{ ambiente.ambiente }}</th>
+			{% for acabado in ambiente.acabados %}
+			{% for detalle in acabado %}
+			<td>{{ detalle }}</td>						
+			{% endfor %}
+		</tr>
+			{% endfor %}
+			{% endfor %}		
+	{% endfor %}
+	</table>
+	</div>
+	{% endif %}
+	
+	{% if modelo %}
+		<div><h2 class="toggle" idb="modelo"><img src="/media/img/recursos/iconos/alpha.png" class="bullet"/>Modelos(planos)</h2></div><a href="#inicio">Volver al inicio</a>
+		<div id="toggle_modelo" class="toggle_contenido">
+		{% for m in modelo %}
+			<div>{{ m.nombre }}</div>
+			<a href="/media/{{ m.plano }}" rel="models" title="{{ m.nombre }} - Zoom modelo"><img src="{{ m.plano.extra_thumbnails.galeria }}" class="imagen"></a>
+		{% endfor %}
+		</div>
+	{% endif %}
+     <div class="clear"></div>
+	<!-- Compartir el proyecto con otras personas -->
+	<div>
+    	<div class="div_vinculo">
+			<span class="vinculo" id="trigger_share">¡Comp&aacute;rtelo!</span>
+			<a name="fb_share" type="icon_link" href="http://www.facebook.com/sharer.php">Facebook</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script><a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-lang="en">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+        </div>
+		{% if receptores %}
+		<h3>La información fue enviada a los siguientes correos</h3>
+		{% endif %}
+		{% for receptor in receptores %}
+		<ul>
+			<li>{{ receptor }}</li>
+		</ul>
+		{% endfor %}
+         <div class="clear"></div>
+		<form method="post" action="" id="share">
+			<ul>
+				<div>{{ form.nombre.label_tag }} : {{ form.nombre }}</div>
+				<div>{{ form.nombre1.label_tag }} : {{ form.nombre1 }} , {{ form.email1.label_tag }} : {{ form.email1 }}</div>
+				<div>{{ form.nombre2.label_tag }} : {{ form.nombre2 }} , {{ form.email2.label_tag }} : {{ form.email2 }}</div>
+				<div>{{ form.nombre3.label_tag }} : {{ form.nombre3 }} , {{ form.email3.label_tag }} : {{ form.email3 }}</div>
+				<div>{{ form.nombre4.label_tag }} : {{ form.nombre4 }} , {{ form.email4.label_tag }} : {{ form.email4 }}</div>
+				<div>{{ form.nombre5.label_tag }} : {{ form.nombre5 }} , {{ form.email5.label_tag }} : {{ form.email5 }}</div> 
+				<li>
+		            <div class="form_div label" id="trigger_share"></div>
+		            <div class="aviso_obligatorio">Los campos marcados con * son obligatorios para compartir el proyecto.</div>
+		        </li>
+				<li>
+					<div class="form_div label"></div>
+					<input type="submit" value="Enviar">
+				</li>
+			</ul>
+		</form>
+        
+</div>
+
+  </div>
+</div>
+  
+
+{% endblock %}

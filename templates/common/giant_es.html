@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/common/giant_es.css" media="screen" />
+	<script type="text/javascript" src="{{ MEDIA_URL }}glossy/glossy.js"></script>
+{% endblock %}
+{% block body %}
+{% if empresa %}
+	<h1>Quienes Somos</h1>
+	<div id="somos">
+		<div id="resena">
+			{{ empresa.resena|safe }}
+		</div>
+		<div id="galeria">
+			<!--<img src="/media/img/mapa/cargo-mapa.jpg" class="glossy"/>-->
+			{% for p in proyectos %}
+				<div class="imagen"><img src="{{ p.imagen.extra_thumbnails.galeria }}" class="glossy"/></div>
+			{% endfor %}
+		</div>
+	</div>
+{% endif %}
+{% endblock %}

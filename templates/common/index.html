@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load truncate %}
+
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/common/index.css" media="screen" />
+	<script type='text/javascript' src='/media/js/common/inicio.js'></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}glossy/cvi.glossy_lib.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}glossy/glossy.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}corner/corner.js"></script>
+	<script type="text/javascript" language="JavaScript">
+		//Precargar icono de carga
+		ico1= new Image(48,48); 
+		ico1.src="{{ MEDIA_URL }}img/recursos/iconos/carga.gif"; 
+		
+		//Cagar Direcciones y ID's de las Imagenes
+		var imagenes = new Array();
+		var i=0;
+		{% for proyecto in proyectos %}
+		imagenes[i++] = new Array("{{ proyecto.id }}","{{ proyecto.imagen.extra_thumbnails.galeria }}","{{ proyecto.nombre }}");
+		{% endfor %}
+		
+		var tipo_proyecto = "Proyectos ";
+		$(document).ready(function(){
+			var d = $(".proyecto");
+			$(d[1]).css("top","20px");
+			//$(d).find(".nombre").hide();
+			//$(d[1]).find(".nombre").show();	
+			var j = 0;
+			borde = 1;
+			var avance = 0;
+			$("#sig").click(function(){
+				if (d.length > 3){
+					if ((d.length - j) == 3){
+						
+					}
+					else{
+						avance = avance + 294;
+						$("#galeria").scrollLeft(avance,"slow");
+						$(d).css("top","0px");
+						$(d[borde+1]).css("top","20px");
+						j++;
+						borde++;
+					}
+					
+				}
+				
+			});
+			$("#ant").click(function(){
+				if (d.length > 3){
+					if (avance == 0){
+						
+					}
+					else{
+						avance = avance - 294;
+						$("#galeria").scrollLeft(avance);
+						$(d).css("top","0px");
+						$(d[borde-1]).css("top","20px");
+						j--;
+						borde--;
+					}
+					
+				}
+				
+				
+			});
+		})
+	</script>
+{% endblock %}
+		
+{% block body %}
+<div class="clear"></div>
+		{% if mostrar_swf %}
+			<div id="flashContent">
+		    	<object width="940" height="610">
+		        <param name="intro" value="/media/swf/intro.swf"></param>
+		        <param name="allowscriptaccess" value="always"></param>
+		        <param name="wmode" value="transparent">
+		        <embed src="/media/swf/intro.swf" type="application/x-shockwave-flash" allowscriptaccess="always" width="940" height="610" wmode="transparent"></embed>
+		    	</object>
+		    </div>
+	    {% endif %}
+
+        
+        <div id="gallery">
+        
+            <div id="titulo"><h2>Proyectos Actuales :</h2></div>
+            <div id="galeria">
+                <div id="scroll">
+                    {% for project in proyectos %}
+                    <div class="proyecto">
+                        <div class="imagen">
+                            <img src="{{ project.imagen.extra_thumbnails.galeria }}"  class="corner iradius16 ishade50 ishadow20"/>
+                        </div>
+						<div class="nombre">
+							<a href="{% url detalle_proyecto project.id %}">{{ project.nombre }}</a><br/>
+							<div>{{ project.descripcion|safe|truncatewords:10 }}</div>
+						</div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div id="botonera">
+                <div id="sig" class="boton">
+                </div>
+                <span id="botonera_texto">Navegar</span>
+                <div id="ant" class="boton">
+                </div>
+            </div>
+        </div>  
+{% endblock %}
+

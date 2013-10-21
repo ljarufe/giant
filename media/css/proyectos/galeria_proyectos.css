@@ -1,0 +1,123 @@
+/* galeria_proyectos.css */
+
+#body {
+	/*background: #CCC url(/media/img/recursos/fondos/back_resumen.png);*/
+}
+
+
+/*configuracion especifica*/
+#galeria {
+	/*background: #222 url(/media/img/recursos/fondos/galeria_fondo.png);*/
+	width: 800px;
+	height: 350px;
+	float: left;
+	overflow: hidden;
+	margin-top:45px;
+	
+}
+#back-form{
+	background: 
+}
+
+#galeria .img {
+	position: absolute;
+	float:left;
+	width: 280px;
+	height: 140px;
+	cursor: pointer;
+	margin:90px 0px 0px 50px;
+}
+
+	#galeria .img .des {
+		background: url(/media/img/recursos/fondos/des_foto_galeria.png);
+		position: relative;
+		top: 110px;
+		width: 270px;
+		height: 20px;
+		padding: 5px;
+	}
+	
+	#galeria .img .des h3 {
+		margin: 0px;
+	}
+#galeria .rel {
+	top: -420px;
+}
+
+#galeria #botonera {
+	background: url(/media/img/recursos/fondos/des_foto_galeria.png);
+	float: right;
+	position: absolute;
+	top: -27px;
+	margin-top:238px;
+	margin-left:602px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	z-index: 7;
+	vertical-align:middle;
+	padding:3px;
+}
+	
+	#galeria #botonera_texto {
+		float: right;
+		font-size: 9px;
+		line-height: 18px;
+		letter-spacing: -1px;
+		padding: 0px 5px;
+	}
+
+	#galeria .boton {	
+		background: url(/media/img/recursos/iconos/flechas.png) no-repeat;
+		float: right;
+		width: 20px;
+		height: 20px;
+		margin: 0px;
+		z-index: 2;
+		cursor: pointer;
+	}
+	
+	#galeria #sig {
+		background-position: -20px 0px;	
+	}
+	
+	#galeria #ant {
+		background-position: 0px 0px;	
+	}
+
+#resumen {
+	background: url(/media/img/recursos/iconos/carga.gif) no-repeat 50% 100px;
+	float: right;
+	width: 550px;
+	position: absolute;
+	margin-left:250px;
+	margin-top:80px;
+}	
+
+	#resumen #resumen_proyecto {
+		background: #3F3F41 url(/media/img/recursos/fondos/back_detalle.png) repeat-x;
+		padding: 10px 10px 5px 10px;
+	}
+	
+	#resumen #resumen_proyecto img {
+		background: #CCC url(/media/img/recursos/fondos/back_foto.png);
+		display: block;
+		margin-bottom: 10px;
+		float: right;
+		margin: 0px 10px 5px 15px;
+		padding: 5px;
+		border-right: 1px solid #999;
+		border-bottom: 1px solid #999;
+	}
+	
+	#resumen #resumen_proyecto p {
+		text-align: justify;
+	}
+	
+	#resumen #resumen_proyecto a {
+		margin-bottom: 10px;
+	}
+	
+	#resumen #resumen_proyecto hr {
+		border: none;
+		border-top: 1px dotted #666;
+	}

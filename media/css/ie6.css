@@ -1,0 +1,16 @@
+/* ie6.css */
+
+/* base.css */
+#proyectos #futuros {
+	position: relative;
+	top: -2px;
+}
+
+#proyectos #ejecutados {
+	position: relative;
+	top: -4px;
+}
+
+#cabecera #contacto .contactanos {
+	overflow: hidden;
+}

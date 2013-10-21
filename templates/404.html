@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block head %}
+	<style>
+    	#body {
+			padding: 10px;
+			width: 890px;
+		}
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <h1>La página no existe</h1>
+    <p>Es posible que el enlace haya caducado o haya escrito incorrectamente 
+    la dirección.</p>
+    <!-- TODO: Página para envíar el error - cambiar la url -->
+    <p>Si cree que este es un error, por favor <a href="{% url inicio %}">envíanos</a> esta información.</p>
+    <h2>Los siguientes enlaces te pueden ser útiles</h2>
+    <ul>
+        <li>
+            <a href="{% url inicio %}">Página de inicio</a>
+        </li>
+        <li>
+            <a href="javascript: history.back();">Página anterior</a>
+    </ul>
+{% endblock %}

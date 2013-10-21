@@ -1,0 +1,25 @@
+{% for field in form.visible_fields %}
+
+    {% if forloop.first %}
+        {% for hidden in form.hidden_fields %}
+        <li class="form_hidden">
+            {{ hidden }}
+        </li>
+        {% endfor %}
+    {% endif %}
+
+    <li>
+        <div class="form_div label">
+            {{ field.label_tag }}
+            {% if field.field.required %}
+                <spam>*</spam>
+            {% endif %}
+        </div>
+        <div class="form_div field">{{ field }}</div>
+        <div class="form_div errors">{{ field.errors }}</div>
+        <div class="form_div help">{{ field.field.help_text }}</div>
+
+        <div class="clear"></div>
+    </li>
+    
+{% endfor %}

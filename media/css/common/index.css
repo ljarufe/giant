@@ -1,0 +1,154 @@
+body {
+	background-color: #000;
+}
+#body {
+	width:889px;
+	
+}
+#proyectos{
+	display:none;
+}
+/**/
+/*#projects {
+	background: url(/media/img/recursos/barralateral/back.png);
+	width: 30px;
+	height: 420px;
+	float: left;
+}
+
+	#projects ul {
+		list-style: none;
+		padding: 0px;
+		margin: 100px 0px 0px 0px;
+	}
+	
+	#projects #actuales {
+		height: 90px;
+	}
+		
+	#projects #futuros {
+		height: 85px;
+	}
+	
+	#projects #ejecutados {
+		height: 105px;
+	}
+	
+	#projects img {
+		width: 30px;
+		margin: 0px;
+		padding: 0px;
+		border: none;
+	}
+*/
+
+#flashContent {
+	position: absolute;
+	top: 5px;
+	z-index: 2;
+}
+#gallery{
+	width:700px;
+	height:390px;
+	background:url("/media/img/recursos/index.png");
+	background-repeat:no-repeat;
+}
+	#gallery #galeria{
+		position:relative;
+		top:100px;
+		/*margin-left:10px;*/
+		height:100px;
+		width:600px;
+		overflow:hidden;
+	}
+	#gallery #titulo{
+		top:40px;
+		position:relative;
+	}
+		#gallery #titulo h2{
+			margin-left:30px;
+			font-size:16px;
+			color:#fff;	
+		}
+.rotacion{
+	position:relative;
+	top:50px;
+	width:300px;
+	height:118px;
+	/*overflow:hidden;*/
+	left:600px;
+	text-align:right;
+}
+
+	#galeria #scroll{
+		width:4000px;
+		height:200px;
+		position:relative;
+	}
+	#galeria #scroll .proyecto{
+		position:relative;
+		height:140px;
+		float:left;
+		margin-left:80px;
+		padding:2px;
+		cursor:pointer;
+	}
+	#galeria #scroll #mycarousel{
+		list-style:none;
+		display:inline-block;
+		margin:0;
+		padding:0;
+	}
+		#galeria #scroll #mycarousel li{
+			margin:0;
+		}
+	#galeria #scroll .nombre{
+		text-align:center;
+		font-size:medium;
+		text-decoration:underline;
+		width:282px;
+	}
+		#galeria #scroll .nombre div{
+			font-size:10px;
+			margin:auto;
+			width:210px;
+		}
+		#galeria #scroll .nombre span p,#galeria #scroll .nombre span h1,#galeria #scroll .nombre span h2,#galeria #scroll .nombre span h3,#galeria #scroll .nombre span h4,#galeria #scroll .nombre span h5,#galeria #scroll .nombre span h6,#galeria #scroll .nombre span ul,#galeria #scroll .nombre span ul li{
+			text-align:center;
+		}
+	#botonera {
+		background: url(/media/img/recursos/fondos/des_foto_galeria.png);
+		float: right;
+		position: relative;
+		top: 50px;
+		margin-right: 5px;
+		padding: 3px 3px 2px 3px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+	}
+	
+	#botonera_texto {
+		float: right;
+		font-size: 9px;
+		line-height: 18px;
+		letter-spacing: -1px;
+		padding: 0px 5px;
+	}
+
+	.boton {	
+		background: url(/media/img/recursos/iconos/flechas.png) no-repeat;
+		float: right;
+		width: 20px;
+		height: 20px;
+		margin: 0px;
+		z-index: 2;
+		cursor: pointer;
+	}
+	
+	#sig {
+		background-position: -20px 0px;	
+	}
+	
+	#ant {
+		background-position: 0px 0px;	
+	}
